@@ -3,9 +3,6 @@
 
 # the problem here is no matter what the request is it will always retutn the same response
 
-
-require 'controllers/root_controller'
-
 class App
 	def call(env)
 		path = env["REQUEST_PATH"]
