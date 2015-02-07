@@ -14,7 +14,7 @@ run -> (env){
 # on the URL and HTTP method of the request
 
 # its job is to just parse the 'path' and the 'HTTP' method and pass it to the corresponding method that
-# is supposed to handle that.
+# is supposed to handle that specific request.
 
 # /post ------> PostController#index
 
