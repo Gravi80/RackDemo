@@ -22,5 +22,7 @@ Authentication
 Cookies
 Exceptions 
 
+https://github.com/rack/rack-contrib
+
 
 In a Rack Application you have to implement one single method call , accepting single argument of environment.
