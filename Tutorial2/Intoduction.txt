@@ -1,0 +1,25 @@
+Frameworks like Rails and Sinatra are Rack Based.
+
+Rack powers web Applications = Its a HTTP parser which sits b/w ur Web application(Rails/Sinatra/Camping) and the web server that runs ur application.
+
+Rack listens to request coming in over TCP/IP , parsing the values and then handing it to our application.
+
+
+What Rack Provides
+------------------
+Rack does a lot more then lower level operations like parsing HTTP.
+It also exposes powerfull API, so that u include Rack module as needed.
+
+Things like:
+
+Request
+Response
+URLMap
+Session
+Logging
+Authentication
+Cookies
+Exceptions 
+
+
+In a Rack Application you have to implement one single method call , accepting single argument of environment.

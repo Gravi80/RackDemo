@@ -28,8 +28,9 @@
 
 
 
-# For any rack application to work u need a file  “config.ru”, and that’s the way u tell rack how ur 
-# application is going to work.
+# For any rack application to work u need a file  “config.ru”, and that’s the way u # tell rack how ur application is going to work.
+
+# .ru stands for 'rackup' file
 
 # You need to use the run method 
 # and that run method must receive an Obejct that respond_to(:call) and that can take the ENV hash.
