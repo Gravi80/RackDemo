@@ -51,7 +51,40 @@ class MyFilter
 	end
 end
 
-# Its not really a middleware now
-run MyFilter.new
+
+# this middleware takes the response and surrounds it with massive div tags 
+class Massive
+	def initialize(app=nil)
+		@app=app
+	end
+
+	def call(env)
+		response=""
+		if(@app)
+			response=@app.call(env)[2][0];
+		end
+		response="<div style='font-size:5.0em'>#{response}</div>"
+		["200",{"Content-Type"=> "text/html"},[response]]
+	end
+end
+
+
+
+
+
+class MyAPP <Mummy
+ def initialize
+ 	get('index',:name=>"Ravi")		
+ end	
+end
+
+# if i want to use middleware to append Sharma to response we can say 'use MyFilter'
+use Massive
+use MyFilter
+run MyAPP.new # creates the Rack Application, it then takes this Rack Application and pass it to next one inline i.e MyFilter and then to 'Massive'
+
+# How is this chaining working, the way this is orchestrated here is by the thing called 'Builder'
+# When u issue these method ( run,use ) calls, what Builder does is simply append them in reverse order.
+
 
 # go to terminal and excute 'rackup app.ru -p 9000' command
