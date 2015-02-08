@@ -20,11 +20,13 @@ class Mummy
 	end
 end
 
-run Mummy.new
+
+class MyApp < Mummy
+	def initialize
+		get('index',:name=>"Ravi")
+	end
+end
 
 
-
-
-
-
+run MyApp.new
 # go to terminal and excute 'rackup app.ru -p 9000' command
