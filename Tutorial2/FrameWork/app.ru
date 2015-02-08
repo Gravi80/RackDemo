@@ -2,6 +2,13 @@ require "haml"
 
 class Mummy
 
+	def initialize
+		@response=""
+	end
+	def get(template,locals)
+		@response=haml('index',locals)
+	end
+
 	def haml(template_name,locals)
 		template =File.open("views/#{template_name}.haml").read
 		engine=Haml::Engine.new(template)
@@ -9,15 +16,15 @@ class Mummy
 	end	
 
 	def call(env)
-		out =""
-		name = "Ravi\n\n"
-		out+=haml('index',:name => "Ravi")
-		env.keys.each { |key| out+="#{key} = #{env[key]}\n" }
-		["200",{"Content-Type"=> "text/plain"},[out]]
+		["200",{"Content-Type"=> "text/html"},[@response]]
 	end
 end
 
 run Mummy.new
+
+
+
+
 
 
 # go to terminal and excute 'rackup app.ru -p 9000' command
